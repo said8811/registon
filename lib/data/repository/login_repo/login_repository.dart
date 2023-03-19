@@ -5,6 +5,7 @@ class LoginRepository {
   LoginApiService loginApiService;
   LoginRepository({required this.loginApiService});
 
-  Future<AppResponse> loginStudent(String phone, String password) =>
-      loginApiService.loginRequest(phone, password);
+  Future<AppResponse> loginStudent(
+          String user, String phone, String password) =>
+      loginApiService.loginRequest(user, phone, password);
 }

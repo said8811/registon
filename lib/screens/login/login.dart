@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
 import 'package:registon/bloc/login_cubit/login_state.dart';
+import 'package:registon/data/repository/storage_repository.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class LoginPage extends StatefulWidget {
@@ -17,9 +18,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   int index = 0;
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  saveNavigate() async {
+    StorageRepository.saveNavigate("/login");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Container(
         width: double.infinity,
@@ -168,6 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50.h,
                       padding: const EdgeInsets.symmetric(horizontal: 20).r,
                       child: TextFormField(
+                        controller: phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                             labelText: "Telefon raqami",
@@ -180,6 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50.h,
                       padding: const EdgeInsets.symmetric(horizontal: 20).r,
                       child: TextFormField(
+                        controller: passwordController,
                         obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: const InputDecoration(
@@ -193,7 +203,13 @@ class _LoginPageState extends State<LoginPage> {
                   bottom: 40.h,
                   left: 40.h,
                   child: ZoomTapAnimation(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<LoginCubit>().login(
+                            index == 0 ? "teacher" : "user",
+                            "+${phoneController.text.trim()}",
+                            passwordController.text.trim(),
+                          );
+                    },
                     child: Container(
                       width: 300.w,
                       height: 50.h,

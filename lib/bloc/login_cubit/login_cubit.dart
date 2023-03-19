@@ -8,9 +8,10 @@ class LoginCubit extends Cubit<UserLoginState> {
   LoginCubit({required this.repository}) : super(UserRegisterInLoad());
   LoginRepository repository;
 
-  login(String phone, String password) async {
+  login(String user, String phone, String password) async {
     emit(UserRegisterInLoad());
-    AppResponse appResponse = await repository.loginStudent(phone, password);
+    AppResponse appResponse =
+        await repository.loginStudent(user, phone, password);
     if (appResponse.errorTxt.isEmpty) {
       StorageRepository.savetoken(appResponse.data as String);
       emit(UserLoginInSucces());

@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class StorageRepository {
   static Future<bool> saveId(String id) async {
     final prefs = await SharedPreferences.getInstance();
-    print("Setga kirdi");
     return await prefs.setString("id", id);
   }
 
@@ -14,7 +13,6 @@ class StorageRepository {
 
   static Future<bool> saveNavigate(String navigate) async {
     final prefs = await SharedPreferences.getInstance();
-    print("Setga kirdi");
     return await prefs.setString("navigate", navigate);
   }
 
@@ -25,7 +23,6 @@ class StorageRepository {
 
   static Future<bool> savetoken(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    print("Setga kirdi");
     return await prefs.setString("token", token);
   }
 

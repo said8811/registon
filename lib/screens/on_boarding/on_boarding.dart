@@ -68,9 +68,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             ),
             ZoomTapAnimation(
               onTap: () {
-                _pageController.nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.linear);
+                if (nextButton != "Boshlash") {
+                  _pageController.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.linear);
+                }
                 if (nextButton == "Boshlash") {
                   Navigator.pushReplacementNamed(context, RouteName.login);
                 }
