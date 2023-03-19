@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:registon/screens/login/login.dart';
+import 'package:registon/screens/on_boarding/on_boarding.dart';
 import 'package:registon/screens/splash/splash.dart';
 
 abstract class RouteName {
   static const splash = '/splash';
   static const onBoarding = '/onBoarding';
-  static const enterPhoneNumber = '/enterPhoneNumer';
+  static const login = '/login';
   static const about = '/about';
   static const profileCreate = '/profileCreate';
   static const home = '/home';
@@ -17,6 +19,10 @@ class AppRoutes {
     switch (settings.name) {
       case RouteName.splash:
         return MaterialPageRoute(builder: (_) => const SplashPage());
+      case RouteName.onBoarding:
+        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+      case RouteName.login:
+        return MaterialPageRoute(builder: (_) => const LoginPage());
       default:
         return MaterialPageRoute(builder: (_) => const Scaffold());
     }
