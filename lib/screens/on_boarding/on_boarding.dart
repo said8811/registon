@@ -38,7 +38,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 onPageChanged: (value) {
                   setState(() {});
                   currentIndex = value;
-
                   if (value == 2) {
                     nextButton = "Boshlash";
                   }
@@ -69,12 +68,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             ),
             ZoomTapAnimation(
               onTap: () {
-                if (nextButton == "Boshlash") {
-                  Navigator.pushReplacementNamed(context, RouteName.login);
-                }
                 _pageController.nextPage(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.linear);
+                if (nextButton == "Boshlash") {
+                  Navigator.pushReplacementNamed(context, RouteName.login);
+                }
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 500),
