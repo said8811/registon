@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/data/api/login_api_service/api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
 import 'package:registon/screens/app_router.dart';
 import 'package:registon/screens/splash/splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'data/repository/login_repo/login_repository.dart';
+
 void main() {
   StorageRepository.getInstance();
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+      create: (context) => LoginCubit(
+          repository: LoginRepository(loginApiService: LoginApiService())),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
