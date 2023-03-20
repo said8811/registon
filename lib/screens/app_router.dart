@@ -3,6 +3,8 @@ import 'package:registon/screens/login/login.dart';
 import 'package:registon/screens/on_boarding/on_boarding.dart';
 import 'package:registon/screens/splash/splash.dart';
 import 'package:registon/screens/tab_box/home/home_page.dart';
+import 'package:registon/screens/tab_box/profile/profile_page.dart';
+import 'package:registon/screens/tab_box/student_tab_box.dart';
 
 abstract class RouteName {
   static const splash = '/splash';
@@ -10,9 +12,11 @@ abstract class RouteName {
   static const login = '/login';
   static const about = '/about';
   static const profileCreate = '/profileCreate';
+  static const profile = '/profile';
   static const home = '/home';
   static const noInternet = '/noInternet';
   static const updateUser = '/updateUser';
+  static const tabBoxStudent = '/tabBoxStudent';
 }
 
 class AppRoutes {
@@ -26,6 +30,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const HomePage());
       case RouteName.login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
+      case RouteName.profile:
+        return MaterialPageRoute(builder: (_) => const ProfiePage());
+      case RouteName.tabBoxStudent:
+        return MaterialPageRoute(builder: (_) => const StudentTabBox());
       default:
         return MaterialPageRoute(builder: (_) => const Scaffold());
     }

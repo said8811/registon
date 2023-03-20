@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/cubit/tab/tab_cubit.dart';
 import 'package:registon/data/api/login_api_service/api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
 import 'package:registon/screens/app_router.dart';
@@ -16,6 +17,7 @@ void main() {
       create: (context) => LoginCubit(
           repository: LoginRepository(loginApiService: LoginApiService())),
     ),
+    BlocProvider(create: (context) => TabBoxCubit()),
   ], child: const MyApp()));
 }
 
