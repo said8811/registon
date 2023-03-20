@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
 import 'package:registon/bloc/login_cubit/login_state.dart';
 import 'package:registon/data/repository/storage_repository.dart';
+import 'package:registon/screens/app_router.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,7 +22,13 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   saveNavigate() async {
-    StorageRepository.saveNavigate("/login");
+    await StorageRepository.saveNavigate("/login");
+  }
+
+  @override
+  void initState() {
+    saveNavigate();
+    super.initState();
   }
 
   @override
@@ -205,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: ZoomTapAnimation(
                     onTap: () {
                       context.read<LoginCubit>().login(
-                            index == 0 ? "teacher" : "user",
+                            index == 0 ? "teacher" : "student",
                             "+${phoneController.text.trim()}",
                             passwordController.text.trim(),
                           );
@@ -229,7 +236,11 @@ class _LoginPageState extends State<LoginPage> {
                   ))
             ],
           ),
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is UserLoginInSucces) {
+              Navigator.pushReplacementNamed(context, RouteName.home);
+            }
+          },
         ),
       )),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:registon/screens/login/login.dart';
 import 'package:registon/screens/on_boarding/on_boarding.dart';
 import 'package:registon/screens/splash/splash.dart';
+import 'package:registon/screens/tab_box/home/home_page.dart';
 
 abstract class RouteName {
   static const splash = '/splash';
@@ -21,6 +22,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+      case RouteName.home:
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case RouteName.login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
       default:
