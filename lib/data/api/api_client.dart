@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-class LoginApiClient {
-  LoginApiClient() {
+class ApiClient {
+  ApiClient() {
     _init();
   }
 
@@ -11,8 +11,8 @@ class LoginApiClient {
     dio = Dio(
       BaseOptions(
         baseUrl: "http://3.70.231.199",
-        connectTimeout: const Duration(seconds: 25000),
-        receiveTimeout: const Duration(seconds: 20000),
+        connectTimeout: 25000,
+        receiveTimeout: 20000,
       ),
     );
 

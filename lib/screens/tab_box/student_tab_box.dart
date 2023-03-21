@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
 import 'package:registon/screens/tab_box/home/home_page.dart';
-import 'package:registon/screens/tab_box/profile/profile_page.dart';
+import 'package:registon/screens/tab_box/profile/worker_profile/student_profile_screen.dart';
 
 class StudentTabBox extends StatelessWidget {
   const StudentTabBox({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class StudentTabBox extends StatelessWidget {
   Widget build(BuildContext context) {
     List pages = [
       HomePage(),
-      ProfiePage(),
+      StudentProfileScreen(),
     ];
     return Scaffold(
       body: BlocBuilder<TabBoxCubit, int>(
