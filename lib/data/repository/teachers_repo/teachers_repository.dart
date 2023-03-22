@@ -6,4 +6,6 @@ class TeachersRepository {
   TeachersRepository({required this.loginApiService});
 
   Future<AppResponse> getTeachers() => loginApiService.getTeachers();
+
+  Future<AppResponse> getSubjects() => loginApiService.getSubjects();
 }

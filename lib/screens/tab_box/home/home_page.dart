@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
+import 'package:registon/bloc/subjects_cubit/subjects_state.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_state.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
@@ -97,46 +99,54 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: 12.h),
-            Container(
-              decoration: const BoxDecoration(),
-              height: 150.h,
-              child: ListView.separated(
-                padding: const EdgeInsets.only(left: 20).r,
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 10.w,
-                ),
-                itemCount: 4,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
+            BlocBuilder<SubjectsCubit, SubjectsState>(
+              builder: (context, state) {
+                if (state is SubjectsInSucces) {
                   return Container(
-                    width: 150.w,
-                    padding: EdgeInsets.symmetric(horizontal: 14.r),
-                    decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 80.h),
-                        Text(
-                          "English",
-                          style: TextStyle(
-                              fontSize: 18.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 6.h),
-                        const Text(
-                          "10ta o'qituvchi",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        )
-                      ],
+                    decoration: const BoxDecoration(),
+                    height: 150.h,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.only(left: 20).r,
+                      separatorBuilder: (context, index) => SizedBox(
+                        width: 10.w,
+                      ),
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 150.w,
+                          padding: EdgeInsets.symmetric(horizontal: 14.r),
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 80.h),
+                              Text(
+                                state.taechers[index].major!,
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 6.h),
+                              const Text(
+                                "10ta o'qituvchi",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   );
-                },
-              ),
+                }
+                return SizedBox();
+              },
             ),
             SizedBox(height: 20.h),
             Padding(
@@ -163,7 +173,6 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         TeachersModel teacher = state.taechers[index];
-
                         return Container(
                           width: 150.w,
                           decoration: BoxDecoration(
@@ -220,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 }
-                return SizedBox();
+                return const SizedBox();
               },
             ),
           ],
