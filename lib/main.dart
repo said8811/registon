@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
 import 'package:registon/data/api/login_api_service/api_service.dart';
+import 'package:registon/data/api/teachers_api_service/teachers_api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
+import 'package:registon/data/repository/teachers_repo/teachers_repository.dart';
 import 'package:registon/screens/app_router.dart';
 import 'package:registon/screens/splash/splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +19,10 @@ void main() {
       create: (context) => LoginCubit(
           repository: LoginRepository(loginApiService: LoginApiService())),
     ),
+    BlocProvider(
+        create: (context) => TeachersCubit(
+            repository:
+                TeachersRepository(loginApiService: TeachersApiService()))),
   ], child: const MyApp()));
 }
 
