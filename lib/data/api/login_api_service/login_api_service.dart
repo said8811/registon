@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:registon/data/models/app_response/app_response.dart';
-import 'package:registon/data/repository/storage_repository.dart';
 
 import '../api_client.dart';
 
-class LoginApiService extends LoginApiClient {
+class LoginApiService extends ApiClient {
   Future<AppResponse> loginRequest(
       String user, String number, String password) async {
     AppResponse myRespone = AppResponse(errorTxt: "");

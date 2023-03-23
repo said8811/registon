@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/cubit/tab/tab_cubit.dart';
+import 'package:registon/data/api/login_api_service/login_api_service.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
 import 'package:registon/data/api/login_api_service/api_service.dart';
@@ -17,9 +19,9 @@ void main() {
   StorageRepository.getInstance();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) => LoginCubit(
-          repository: LoginRepository(loginApiService: LoginApiService())),
+      create: (context) => LoginCubit(repository: LoginRepository()),
     ),
+    BlocProvider(create: (context) => TabBoxCubit()),
     BlocProvider(
         create: (context) => TeachersCubit(
             repository:

@@ -238,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           listener: (context, state) {
             if (state is UserLoginInSucces) {
-              Navigator.pushReplacementNamed(context, RouteName.home);
+              Navigator.pushReplacementNamed(context, RouteName.tabBoxStudent);
             }
           },
         ),

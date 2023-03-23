@@ -1,5 +1,10 @@
 class AppResponse {
   String errorTxt;
+  int? statusCode;
   dynamic data;
-  AppResponse({required this.errorTxt});
+  AppResponse({
+    this.errorTxt = '',
+    this.data,
+    this.statusCode,
+  });
 }
