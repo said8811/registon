@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                       separatorBuilder: (context, index) => SizedBox(
                         width: 10.w,
                       ),
-                      itemCount: 4,
+                      itemCount: state.taechers.length,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
@@ -132,9 +132,9 @@ class _HomePageState extends State<HomePage> {
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 6.h),
-                              const Text(
-                                "10ta o'qituvchi",
-                                style: TextStyle(
+                              Text(
+                                "${state.taechers[index].count}ta o'qituvchi",
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
                               )
