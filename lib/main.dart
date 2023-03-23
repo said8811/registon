@@ -5,7 +5,6 @@ import 'package:registon/cubit/tab/tab_cubit.dart';
 import 'package:registon/data/api/login_api_service/login_api_service.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
-import 'package:registon/data/api/login_api_service/api_service.dart';
 import 'package:registon/data/api/teachers_api_service/teachers_api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
 import 'package:registon/data/repository/teachers_repo/teachers_repository.dart';

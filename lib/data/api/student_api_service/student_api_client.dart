@@ -15,8 +15,6 @@ class StudentApiClient {
     dio = Dio(
       BaseOptions(
         baseUrl: "http://3.126.92.10/",
-        connectTimeout: 25000,
-        receiveTimeout: 20000,
       ),
     );
 

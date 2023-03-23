@@ -23,7 +23,7 @@ class ImagePickerService {
                       InkWell(
                         onTap: () async {
                           var some = await _getFromGallery(picker);
-                          getIt<WorkerProfileBloc>().pickImage(some!);
+                          // getIt<WorkerProfileBloc>().pickImage(some!);
                           // getIt<WorkerProfileBloc>().add(UpdateWorkerInfoEvent(password: password, phone: phone, email: email, surname: surname, name: name));
                           Navigator.pop(context);
                         },
@@ -41,7 +41,7 @@ class ImagePickerService {
                         onTap: () async {
                           XFile? some = await _getFromCamera(picker);
                           // getIt<CourseBloc>().pickImage(some!);
-                          getIt<WorkerProfileBloc>().pickImage(some!);
+                          // getIt<WorkerProfileBloc>().pickImage(some!);
                           Navigator.pop(context);
                         },
                         child: Column(

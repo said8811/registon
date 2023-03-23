@@ -242,15 +242,15 @@ class _StudentUpdateProfileScreenState
                         onTap: () {
                           if (formGlobalKey.currentState!.validate()) {
                             formGlobalKey.currentState!.save();
-                            getIt<WorkerProfileBloc>().add(
-                              UpdateWorkerInfoEvent(
-                                password: passwordController.text,
-                                phone: phoneNumber,
-                                email: emailController.text,
-                                surname: surNameController.text,
-                                name: userNameController.text,
-                              ),
-                            );
+                            // getIt<WorkerProfileBloc>().add(
+                            //   UpdateWorkerInfoEvent(
+                            //     password: passwordController.text,
+                            //     phone: phoneNumber,
+                            //     email: emailController.text,
+                            //     surname: surNameController.text,
+                            //     name: userNameController.text,
+                            //   ),
+                            // );
                           }
                         }),
                   )
