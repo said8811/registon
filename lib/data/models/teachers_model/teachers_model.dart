@@ -3,6 +3,7 @@ class TeachersModel {
   String lastName;
   String imagePath;
   String phoneNumber;
+  String description;
   String birthDate;
   int partOfDay;
   bool workDays;
@@ -16,6 +17,7 @@ class TeachersModel {
       required this.lastName,
       required this.imagePath,
       required this.phoneNumber,
+      required this.description,
       required this.birthDate,
       required this.partOfDay,
       required this.workDays,
@@ -30,6 +32,7 @@ class TeachersModel {
       lastName: json['lastName'],
       imagePath: json['imagePath'],
       phoneNumber: json['phoneNumber'],
+      description: json['description'],
       birthDate: json['birthDate'],
       partOfDay: json['partOfDay'],
       workDays: json['workDays'],

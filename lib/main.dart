@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
@@ -15,7 +16,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'data/repository/login_repo/login_repository.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   StorageRepository.getInstance();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
       create: (context) => LoginCubit(repository: LoginRepository()),
