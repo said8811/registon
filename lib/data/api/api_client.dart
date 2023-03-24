@@ -11,8 +11,6 @@ class ApiClient {
     dio = Dio(
       BaseOptions(
         baseUrl: "http://3.70.231.199",
-        connectTimeout: 25000,
-        receiveTimeout: 20000,
       ),
     );
 

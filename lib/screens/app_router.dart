@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:registon/data/models/student_model/student_model.dart';
+import 'package:registon/screens/help/help_support_page.dart';
 import 'package:registon/screens/login/login.dart';
 import 'package:registon/screens/on_boarding/on_boarding.dart';
+import 'package:registon/screens/settings/settings_screen.dart';
 import 'package:registon/screens/splash/splash.dart';
 import 'package:registon/screens/tab_box/home/home_page.dart';
-import 'package:registon/screens/tab_box/profile/update_profile_screen.dart';
-import 'package:registon/screens/tab_box/profile/worker_profile/student_profile_screen.dart';
+import 'package:registon/screens/tab_box/profile/student_profile/student_info_screen.dart';
+import 'package:registon/screens/tab_box/profile/student_profile/student_profile_screen.dart';
+import 'package:registon/screens/tab_box/profile/student_profile_update/student_update_screen.dart';
 import 'package:registon/screens/tab_box/student_tab_box.dart';
 
 abstract class RouteName {
@@ -19,6 +23,9 @@ abstract class RouteName {
   static const updateUser = '/updateUser';
   static const tabBoxStudent = '/tabBoxStudent';
   static const studentUpdate = '/studentUpdate';
+  static const studentInfo = '/studentInfo';
+  static const settingScreen = '/settingScreen';
+  static const helpScreen = '/helpScreen';
 }
 
 class AppRoutes {
@@ -34,11 +41,20 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case RouteName.profile:
         return MaterialPageRoute(builder: (_) => const StudentProfileScreen());
+      case RouteName.settingScreen:
+        return MaterialPageRoute(builder: (_) => const SettingScreen());
+      case RouteName.helpScreen:
+        return MaterialPageRoute(builder: (_) => const HelpScreen());
+      case RouteName.studentInfo:
+        return MaterialPageRoute(
+            builder: (_) => StudentInfoScreen(
+                  studentModel: settings.arguments as StudentModel,
+                ));
       case RouteName.tabBoxStudent:
         return MaterialPageRoute(builder: (_) => const StudentTabBox());
       case RouteName.studentUpdate:
         return MaterialPageRoute(
-            builder: (_) => const StudentUpdateProfileScreen());
+            builder: (_) => const StudentUpdateProfielScreen());
       default:
         return MaterialPageRoute(builder: (_) => const Scaffold());
     }

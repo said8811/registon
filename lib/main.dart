@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
-import 'package:registon/data/api/login_api_service/login_api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
 import 'package:registon/screens/app_router.dart';
-import 'package:registon/screens/splash/splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'data/repository/login_repo/login_repository.dart';
+import 'data/get_it.dart';
 
-void main() {
+void main() async {
+  setup();
+  WidgetsFlutterBinding.ensureInitialized();
   StorageRepository.getInstance();
+  await StorageRepository.getInstance();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) => LoginCubit(repository: LoginRepository()),
+      create: (context) => LoginCubit(),
     ),
     BlocProvider(create: (context) => TabBoxCubit()),
+    BlocProvider(
+      create: (context) => StudentProfileBloc(),
+    )
   ], child: const MyApp()));
 }
 

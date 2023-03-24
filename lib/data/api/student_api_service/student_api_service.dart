@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:registon/data/api/student_api_service/student_api_client.dart';
 import 'package:registon/data/models/app_response/app_response.dart';
 
@@ -20,26 +21,32 @@ class StudentApiService extends StudentApiClient {
     return myResponse;
   }
 
-  Future<AppResponse> updateStudent(
-      {required String name,
-      required String surname,
-      required String email,
-      required String phone,
-      required String password,
-      File? file}) async {
+  Future<AppResponse> updateStudent({
+    required String firstName,
+    required String lastName,
+    required int studentLevel,
+    required String subject,
+    required String birthDate,
+    required String phoneNumber,
+    required String password,
+    required XFile file,
+    required int id,
+  }) async {
     AppResponse myResponse = AppResponse();
     FormData data = FormData.fromMap({
-      "Name": name,
-      "Surname": surname,
-      "Email": email,
-      "Phone": phone,
+      "FirstName": firstName,
+      "LastName": lastName,
+      "PhoneNumber": phoneNumber,
       "Password": password,
-      "Image": file == null ? null : await MultipartFile.fromFile(file.path)
+      "Image": await MultipartFile.fromFile(file.path),
+      "Subject": subject,
+      "BirthDate": birthDate,
+      "StudentLevel": studentLevel,
     });
 
     try {
-      Response response =
-          await dio.put("${dio.options.baseUrl}student/update", data: data);
+      Response response = await dio.put("${dio.options.baseUrl}student/update",
+          queryParameters: {"id": id}, data: data);
       if (response.statusCode == 200) {
         myResponse.data = response.data;
         myResponse.statusCode = response.statusCode;
