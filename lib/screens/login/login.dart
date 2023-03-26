@@ -213,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () {
                       context.read<LoginCubit>().login(
                             index == 0 ? "teacher" : "student",
-                            "+${phoneController.text.trim()}",
+                            phoneController.text.trim(),
                             passwordController.text.trim(),
                           );
                     },

@@ -10,8 +10,8 @@ class StudentTabBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      HomePage(),
-      StudentProfileScreen(),
+      const HomePage(),
+      const StudentProfileScreen(),
     ];
     return Scaffold(
       body: BlocBuilder<TabBoxCubit, int>(

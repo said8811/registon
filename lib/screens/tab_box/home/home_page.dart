@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -10,7 +11,10 @@ import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_state.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
 import 'package:registon/data/repository/storage_repository.dart';
+import 'package:registon/screens/app_router.dart';
+import 'package:registon/screens/tab_box/home/widgets/teachers_widget.dart';
 import 'package:registon/screens/teacher_details/teacher_detail_page.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,26 +74,30 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.sp),
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(20.r),
-              padding: EdgeInsets.symmetric(horizontal: 20.r),
-              height: 48.h,
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(25)),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.search,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(width: 8.w),
-                  const Text(
-                    "O'qituvchi qidiring",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+            InkWell(
+              onTap: () =>
+                  Navigator.pushNamed(context, RouteName.searchTeacher),
+              child: Container(
+                margin: EdgeInsets.all(20.r),
+                padding: EdgeInsets.symmetric(horizontal: 20.r),
+                height: 48.h,
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(25)),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(width: 8.w),
+                    const Text(
+                      "O'qituvchi qidiring",
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -189,59 +197,8 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ));
                           },
-                          child: Container(
-                            width: 150.w,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.orange),
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        "http://3.70.231.199/${state.taechers[index].imagePath}"),
-                                    fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Stack(children: [
-                              Positioned(
-                                bottom: 0,
-                                child: Container(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 10.r),
-                                  decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          colors: [
-                                            Colors.orange,
-                                            Colors.orange.withOpacity(0.24)
-                                          ]),
-                                      color: Colors.orange,
-                                      borderRadius: BorderRadius.circular(14)),
-                                  height: 80.h,
-                                  width: 150.w,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        height: 25.h,
-                                      ),
-                                      Text(
-                                        state.taechers[index].firstName,
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(height: 6.h),
-                                      Text(
-                                        teacher.subject,
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ]),
+                          child: MyTeacherWidget(
+                            teacher: teacher,
                           ),
                         );
                       },

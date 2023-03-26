@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../data/get_it.dart';
-
 class ImagePickerService {
   showPicker(context) async {
     final ImagePicker picker = ImagePicker();

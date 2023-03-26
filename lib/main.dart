@@ -26,7 +26,8 @@ void main() {
   );
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) => LoginCubit(repository: LoginRepository()),
+      create: (context) => LoginCubit(
+          repository: LoginRepository(apiService: LoginApiService())),
     ),
     BlocProvider(create: (context) => TabBoxCubit()),
     BlocProvider(

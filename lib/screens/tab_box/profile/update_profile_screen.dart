@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
-import '../../../data/get_it.dart';
 import '../../../widgets/global_button.dart';
 import '../../../widgets/image_picker_service.dart';
 import '../../../widgets/phone_input_component.dart';
