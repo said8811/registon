@@ -5,7 +5,7 @@ import 'package:registon/data/models/teachers_model/teachers_model.dart';
 
 import '../../models/app_response/app_response.dart';
 
-class TeachersApiService extends LoginApiClient {
+class TeachersApiService extends ApiClient {
   Future<AppResponse> getTeachers() async {
     AppResponse myRespone = AppResponse(errorTxt: "");
     try {
