@@ -9,7 +9,7 @@ class CommentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 151.h,
+      height: 161.h,
       width: 213.h,
       padding: const EdgeInsets.all(8).r,
       decoration: BoxDecoration(

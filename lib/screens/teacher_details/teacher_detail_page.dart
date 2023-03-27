@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
 import 'package:registon/screens/teacher_details/widgets/comment_widget.dart';
+import 'package:registon/screens/teacher_details/widgets/rating_widget.dart';
 import 'widgets/calendar_container.dart';
 
 class TeacherDetails extends StatefulWidget {
@@ -20,61 +21,22 @@ class _TeacherDetailsState extends State<TeacherDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(color: Colors.orange),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 18.h,
-            ),
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ))
-              ],
-            ),
-            SizedBox(
-              height: 180.h,
-            ),
-            //   SizedBox(
-
-            //     height: 88.h,
-            //     child: ListView.builder(
-            //       itemCount: 7,
-            //       padding: const EdgeInsets.only(left: 24, right: 12).r,
-            //       scrollDirection: Axis.horizontal,
-            //       physics: const BouncingScrollPhysics(),
-            //       itemBuilder: (context, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             setState(() {
-            //               selectedDay = index;
-            //             });
-            //           },
-            //           child: CalendarContainer(
-            //             select: selectedDay == index ? true : false,
-            //             week: DateFormat.E().format(
-            //                 DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)),
-            //             date: DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)
-            //                 .day,
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
-            Expanded(
-              child: Container(
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(color: Colors.orange),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 180.h,
+              ),
+              Container(
+                height: 900.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -145,6 +107,15 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                     SizedBox(height: 20.h),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.0.r),
+                      child: Text(
+                        "O'quvchilar reytingi",
+                        style: TextStyle(
+                            fontSize: 24.sp, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.0.r),
                       child: Row(
                         children: [
                           Text(
@@ -160,9 +131,7 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                    TeacherRatingWidget(),
                     Container(
                       decoration: const BoxDecoration(),
                       height: 151.h,
@@ -182,11 +151,41 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                     )
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
+ //   SizedBox(
+
+            //     height: 88.h,
+            //     child: ListView.builder(
+            //       itemCount: 7,
+            //       padding: const EdgeInsets.only(left: 24, right: 12).r,
+            //       scrollDirection: Axis.horizontal,
+            //       physics: const BouncingScrollPhysics(),
+            //       itemBuilder: (context, index) {
+            //         return GestureDetector(
+            //           onTap: () {
+            //             setState(() {
+            //               selectedDay = index;
+            //             });
+            //           },
+            //           child: CalendarContainer(
+            //             select: selectedDay == index ? true : false,
+            //             week: DateFormat.E().format(
+            //                 DateTime.fromMillisecondsSinceEpoch(
+            //                     DateTime.now().millisecondsSinceEpoch +
+            //                         (index) * 86400000)),
+            //             date: DateTime.fromMillisecondsSinceEpoch(
+            //                     DateTime.now().millisecondsSinceEpoch +
+            //                         (index) * 86400000)
+            //                 .day,
+            //           ),
+            //         );
+            //       },
+            //     ),
+            //   ),

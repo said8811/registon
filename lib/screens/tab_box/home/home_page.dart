@@ -74,37 +74,47 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.sp),
               ),
             ),
-            InkWell(
-              onTap: () =>
-                  Navigator.pushNamed(context, RouteName.searchTeacher),
-              child: Container(
-                margin: EdgeInsets.all(20.r),
-                padding: EdgeInsets.symmetric(horizontal: 20.r),
-                height: 48.h,
-                decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(25)),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(width: 8.w),
-                    const Text(
-                      "O'qituvchi qidiring",
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
+            Padding(
+              padding: const EdgeInsets.all(20.0).r,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(25),
+                onTap: () =>
+                    Navigator.pushNamed(context, RouteName.searchTeacher),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20.r),
+                  height: 48.h,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(width: 8.w),
+                      const Text(
+                        "O'qituvchi qidiring",
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20).r,
-              child: Text(
-                "Fanlar",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              child: Row(
+                children: [
+                  Text(
+                    "Fanlar",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+                  ),
+                  const Spacer(),
+                  TextButton(onPressed: () {}, child: const Text("Davomi"))
+                ],
               ),
             ),
             SizedBox(height: 12.h),
@@ -164,10 +174,17 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.only(left: 20).r,
-              child: Text(
-                "O'qituvchilar",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              padding: const EdgeInsets.symmetric(horizontal: 20).r,
+              child: Row(
+                children: [
+                  Text(
+                    "O'qituvchilar",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+                  ),
+                  const Spacer(),
+                  TextButton(onPressed: () {}, child: const Text("Davomi"))
+                ],
               ),
             ),
             SizedBox(height: 12.h),
