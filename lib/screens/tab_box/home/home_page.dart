@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -10,6 +11,10 @@ import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
 import 'package:registon/bloc/teachers_cubit/teachers_state.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
 import 'package:registon/data/repository/storage_repository.dart';
+import 'package:registon/screens/app_router.dart';
+import 'package:registon/screens/tab_box/home/widgets/teachers_widget.dart';
+import 'package:registon/screens/teacher_details/teacher_detail_page.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   saveNavigate() async {
-    await StorageRepository.saveNavigate("/home");
+    await StorageRepository.saveNavigate("/tabBoxStudent");
   }
 
   @override
@@ -69,33 +74,47 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.sp),
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(20.r),
-              padding: EdgeInsets.symmetric(horizontal: 20.r),
-              height: 48.h,
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(25)),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.search,
-                    color: Colors.grey,
+            Padding(
+              padding: const EdgeInsets.all(20.0).r,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(25),
+                onTap: () =>
+                    Navigator.pushNamed(context, RouteName.searchTeacher),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20.r),
+                  height: 48.h,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(width: 8.w),
+                      const Text(
+                        "O'qituvchi qidiring",
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
                   ),
-                  SizedBox(width: 8.w),
-                  const Text(
-                    "O'qituvchi qidiring",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20).r,
-              child: Text(
-                "Fanlar",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              child: Row(
+                children: [
+                  Text(
+                    "Fanlar",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+                  ),
+                  const Spacer(),
+                  TextButton(onPressed: () {}, child: const Text("Davomi"))
+                ],
               ),
             ),
             SizedBox(height: 12.h),
@@ -123,7 +142,12 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 80.h),
+                              SvgPicture.asset(
+                                "assets/svg/courses_back.svg",
+                                color: Colors.amber.withOpacity(0.54),
+                                width: 100.w,
+                              ),
+                              SizedBox(height: 0.h),
                               Text(
                                 state.taechers[index].major!,
                                 style: TextStyle(
@@ -145,15 +169,22 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 }
-                return SizedBox();
+                return const SizedBox();
               },
             ),
             SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.only(left: 20).r,
-              child: Text(
-                "O'qituvchilar",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              padding: const EdgeInsets.symmetric(horizontal: 20).r,
+              child: Row(
+                children: [
+                  Text(
+                    "O'qituvchilar",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+                  ),
+                  const Spacer(),
+                  TextButton(onPressed: () {}, child: const Text("Davomi"))
+                ],
               ),
             ),
             SizedBox(height: 12.h),
@@ -173,57 +204,19 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         TeachersModel teacher = state.taechers[index];
-                        return Container(
-                          width: 150.w,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.orange),
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      "http://3.70.231.199/${state.taechers[index].imagePath}"),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Stack(children: [
-                            Positioned(
-                              bottom: 0,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 10.r),
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                        colors: [
-                                          Colors.orange,
-                                          Colors.orange.withOpacity(0.24)
-                                        ]),
-                                    color: Colors.orange,
-                                    borderRadius: BorderRadius.circular(14)),
-                                height: 80.h,
-                                width: 150.w,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 25.h,
-                                    ),
-                                    Text(
-                                      state.taechers[index].firstName,
-                                      style: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(height: 6.h),
-                                    Text(
-                                      teacher.subject,
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ]),
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TeacherDetails(
+                                    teacher: teacher,
+                                  ),
+                                ));
+                          },
+                          child: MyTeacherWidget(
+                            teacher: teacher,
+                          ),
                         );
                       },
                     ),

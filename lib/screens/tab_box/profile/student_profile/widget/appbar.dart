@@ -11,10 +11,6 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 80.h,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
-      ),
       leading: null,
       backgroundColor: const Color(0xFF002766),
       title: title,

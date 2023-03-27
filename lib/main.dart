@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
-import 'package:registon/bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
+import 'package:registon/data/api/login_api_service/login_api_service.dart';
+import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
+import 'package:registon/bloc/teachers_cubit/teachers_cubit.dart';
+import 'package:registon/data/api/login_api_service/api_service.dart';
+import 'package:registon/data/api/teachers_api_service/teachers_api_service.dart';
 import 'package:registon/data/repository/storage_repository.dart';
+import 'package:registon/data/repository/teachers_repo/teachers_repository.dart';
 import 'package:registon/screens/app_router.dart';
+import 'package:registon/screens/splash/splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'data/get_it.dart';
+import 'data/repository/login_repo/login_repository.dart';
 
-void main() async {
-  setup();
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   StorageRepository.getInstance();
-  await StorageRepository.getInstance();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
       create: (context) => LoginCubit(),
@@ -22,6 +32,14 @@ void main() async {
     BlocProvider(
       create: (context) => StudentProfileBloc(),
     )
+    BlocProvider(
+        create: (context) => TeachersCubit(
+            repository:
+                TeachersRepository(loginApiService: TeachersApiService()))),
+    BlocProvider(
+        create: (context) => SubjectsCubit(
+            repository:
+                TeachersRepository(loginApiService: TeachersApiService()))),
   ], child: const MyApp()));
 }
 
