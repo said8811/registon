@@ -1,11 +1,12 @@
 import 'package:image_picker/image_picker.dart';
+import 'package:registon/data/api/student_api_service/student_api_service.dart';
 import 'package:registon/data/models/app_response/app_response.dart';
 
 import '../../get_it.dart';
 
 class StudentRepository {
   Future<AppResponse> getStudentInfo() async =>
-      await getIt<StudentRepository>().getStudentInfo();
+      await getIt<StudentApiService>().getStudentInfo();
 
   Future<AppResponse> updateStudentInfo({
     required String firstName,
