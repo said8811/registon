@@ -21,8 +21,8 @@ class StudentApiClient {
       return handler.next(error);
     }), onRequest: (requestOptions, handler) async {
       String token = await StorageRepository.gettoken();
-      requestOptions.headers["Authorization"] = token;
-      requestOptions.headers["accept"] = "application/json";
+      //  requestOptions.headers["Authorization"] = token;
+      //requestOptions.headers["accept"] = "application/json";
       return handler.next(requestOptions);
     }, onResponse: (Response response, ResponseInterceptorHandler handler) {
       debugPrint("RESPONSE HAS RECEIVED");
