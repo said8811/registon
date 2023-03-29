@@ -33,7 +33,7 @@ class ProfileItem extends StatelessWidget {
         ),
         trailing: const Icon(
           Icons.arrow_forward_ios,
-          color: Colors.white70,
+          color: Colors.white30,
         ),
         title: Text(text),
         onTap: onTap,

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:registon/data/models/student_model/student_model.dart';
 import 'package:registon/screens/app_router.dart';
-import 'package:registon/screens/tab_box/profile/worker_profile/widget/appbar.dart';
-import 'package:registon/screens/tab_box/profile/worker_profile/widget/profile_info_item.dart';
+import 'package:registon/screens/tab_box/profile/student_profile/widget/appbar.dart';
+import 'package:registon/screens/tab_box/profile/student_profile/widget/profile_info_item.dart';
 
 import '../../../../widgets/global_button.dart';
 
 class StudentInfoScreen extends StatelessWidget {
-  const StudentInfoScreen({super.key});
+  StudentInfoScreen({super.key, required this.studentModel});
+  StudentModel studentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +32,16 @@ class StudentInfoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage('https://picsum.photos/200'),
-                  ),
-                ),
+              children: [
                 Expanded(
                   child: ListTile(
                     title: Text(
-                      "Name",
-                      style: TextStyle(fontSize: 22),
+                      studentModel.firstName,
+                      style: const TextStyle(fontSize: 22),
                     ),
                     subtitle: Text(
-                      "birnima@gmail.com",
-                      style: TextStyle(color: Colors.white54),
+                      studentModel.lastName,
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ),
                 )
@@ -55,21 +50,23 @@ class StudentInfoScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 2, top: 20, bottom: 20),
               child: Text(
-                "Worker Information",
+                "Student Information",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
               ),
             ),
-            ProfileInfoItem(info: "Birnimabek", type: "Name"),
-            ProfileInfoItem(info: "Palonchiyev", type: "Surname"),
-            ProfileInfoItem(info: "birnima@gmail.com", type: "Email"),
-            ProfileInfoItem(info: "*********", type: "Password"),
-            ProfileInfoItem(info: "+998900265088", type: "Phone"),
+            ProfileInfoItem(info: studentModel.firstName, type: "Name"),
+            ProfileInfoItem(info: studentModel.lastName, type: "Surname"),
+            ProfileInfoItem(info: studentModel.subject, type: "Subject"),
+            ProfileInfoItem(
+                info: studentModel.subjects.toString(), type: "Subjects"),
+            ProfileInfoItem(info: studentModel.id.toString(), type: "ID"),
             const Spacer(),
             GlobalButton(
               isActive: true,
               buttonText: "Edit Profile",
               onTap: () {
-                Navigator.pushNamed(context, RouteName.studentUpdate);
+                Navigator.pushNamed(context, RouteName.studentUpdate,
+                    arguments: studentModel);
               },
             )
           ],
@@ -78,10 +75,3 @@ class StudentInfoScreen extends StatelessWidget {
     );
   }
 }
-
-    // required this.name,
-    // required this.surname,
-    // required this.email,
-    // required this.password,
-    // required this.phone,
-    // required this.image,

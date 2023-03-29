@@ -1,8 +1,24 @@
-part of 'student_profile_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
-abstract class StudentProfileEvent extends Equatable {
-  const StudentProfileEvent();
+abstract class StudentProfileEvent {}
 
-  @override
-  List<Object> get props => [];
+class GetStudentInfoEvent extends StudentProfileEvent {}
+
+class UpdateStudentInfoEvent extends StudentProfileEvent {
+  String subject;
+  String lastName;
+  String firstName;
+  String phoneNumber;
+  String subjects;
+  XFile image;
+  String password;
+
+  UpdateStudentInfoEvent(
+      {required this.image,
+      required this.firstName,
+      required this.lastName,
+      required this.phoneNumber,
+      required this.subject,
+      required this.subjects,
+      required this.password});
 }

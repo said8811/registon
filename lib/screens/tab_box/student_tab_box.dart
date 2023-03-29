@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
 import 'package:registon/screens/tab_box/home/home_page.dart';
-import 'package:registon/screens/tab_box/profile/worker_profile/student_profile_screen.dart';
+import 'package:registon/screens/tab_box/profile/student_profile/student_profile_screen.dart';
 
 class StudentTabBox extends StatelessWidget {
   const StudentTabBox({Key? key}) : super(key: key);
