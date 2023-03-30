@@ -6,25 +6,30 @@ import 'package:registon/data/api/student_api_service/student_api_client.dart';
 import 'package:registon/data/models/app_response/app_response.dart';
 import 'package:registon/data/repository/storage_repository.dart';
 
+import '../../models/student_model/student_model.dart';
+
 class StudentApiService extends StudentApiClient {
   Future<AppResponse> getStudentInfo() async {
     AppResponse myResponse = AppResponse();
     try {
       String token = await StorageRepository.gettoken();
       print(token);
-      Response response =
-          await dio.get("${dio.options.baseUrl}student/get-by-token",
-              options: Options(headers: {
-                "Authorization": token,
-              }));
+      Response response = await dio.get(
+        "${dio.options.baseUrl}student/get-by-token",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $token",
+          },
+        ),
+      );
 
       if (response.statusCode == 200) {
-        myResponse.data = response.data;
+        myResponse.data = StudentModel.fromJson(response.data);
         myResponse.statusCode = response.statusCode;
-        print(myResponse.data);
+        // print(myResponse.data);
       }
     } catch (e) {
-      print(e);
+      // print(e);
       myResponse.errorTxt = e.toString();
     }
     return myResponse;

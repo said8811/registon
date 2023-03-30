@@ -19,6 +19,7 @@ import 'bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'data/repository/login_repo/login_repository.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setup();
   StorageRepository.getInstance();
   WidgetsFlutterBinding.ensureInitialized();
