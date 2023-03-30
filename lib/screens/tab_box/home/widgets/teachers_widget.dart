@@ -22,6 +22,7 @@ class MyTeacherWidget extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
+            width: 150.w,
             padding: EdgeInsets.symmetric(horizontal: 10.r),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -31,7 +32,6 @@ class MyTeacherWidget extends StatelessWidget {
                 color: Colors.orange,
                 borderRadius: BorderRadius.circular(14)),
             height: 80.h,
-            width: 150.w,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

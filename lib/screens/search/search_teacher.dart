@@ -46,9 +46,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
             BlocBuilder<SubjectsCubit, SubjectsState>(
               builder: (context, state) {
                 if (state is SubjectsInSucces) {
-                  List<SubjectModel> subjects = state.taechers;
-                  subjects.insert(0, SubjectModel(major: "All"));
-                  subjects = subjects.toSet().toList();
+                  state.taechers = state.taechers.reversed.toList();
                   return SizedBox(
                     height: 34.h,
                     child: ListView.separated(
