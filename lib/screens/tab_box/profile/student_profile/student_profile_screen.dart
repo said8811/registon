@@ -116,8 +116,8 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
         if (state.status == FormStatus.gettingStudentInfoInFailury) {
           return Center(child: Text(state.errorMessage));
         }
-        return const Center(
-          child: Text("Error, but I don't know where?"),
+        return Center(
+          child: Text(state.errorMessage.toString()),
         );
       },
     );

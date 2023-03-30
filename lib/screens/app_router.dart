@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:registon/data/models/teachers_model/teachers_model.dart';
+import 'package:registon/screens/all_teachers/all_teachers_screen.dart';
 import 'package:registon/screens/login/login.dart';
 import 'package:registon/screens/on_boarding/on_boarding.dart';
 import 'package:registon/screens/search/search_teacher.dart';
@@ -29,6 +31,7 @@ abstract class RouteName {
   static const settingScreen = '/settingScreen';
   static const helpScreen = '/helpScreen';
   static const searchTeacher = '/searchTeacher';
+  static const allTeachers = '/allTeachers';
 }
 
 class AppRoutes {
@@ -46,6 +49,11 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const StudentProfileScreen());
       case RouteName.tabBoxStudent:
         return MaterialPageRoute(builder: (_) => const StudentTabBox());
+      case RouteName.allTeachers:
+        return MaterialPageRoute(
+            builder: (_) => AllTeachersPage(
+                  teachers: settings.arguments as List<TeachersModel>,
+                ));
       case RouteName.studentUpdate:
         return MaterialPageRoute(
             builder: (_) => const StudentUpdateProfielScreen());

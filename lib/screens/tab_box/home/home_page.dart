@@ -34,6 +34,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  List<TeachersModel> Allteachers = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,7 +185,12 @@ class _HomePageState extends State<HomePage> {
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
                   ),
                   const Spacer(),
-                  TextButton(onPressed: () {}, child: const Text("Davomi"))
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RouteName.allTeachers,
+                            arguments: Allteachers);
+                      },
+                      child: const Text("Davomi"))
                 ],
               ),
             ),
@@ -191,6 +198,7 @@ class _HomePageState extends State<HomePage> {
             BlocBuilder<TeachersCubit, TeachersState>(
               builder: (context, state) {
                 if (state is TeachersInSucces) {
+                  Allteachers = state.taechers;
                   return Container(
                     decoration: const BoxDecoration(),
                     height: 200.h,

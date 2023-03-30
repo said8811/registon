@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_state.dart';
+import 'package:registon/data/models/subjects_model/subject_model.dart';
 
 class SearchTeacher extends StatefulWidget {
   const SearchTeacher({super.key});
@@ -45,6 +46,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
             BlocBuilder<SubjectsCubit, SubjectsState>(
               builder: (context, state) {
                 if (state is SubjectsInSucces) {
+                  state.taechers = state.taechers.reversed.toList();
                   return SizedBox(
                     height: 34.h,
                     child: ListView.separated(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registon/bloc/login_cubit/login_cubit.dart';
+import 'package:registon/bloc/student_profile/bloc/student_profile_event.dart';
 import 'package:registon/cubit/tab/tab_cubit.dart';
 import 'package:registon/data/api/login_api_service/login_api_service.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
@@ -18,6 +19,7 @@ import 'bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'data/repository/login_repo/login_repository.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setup();
   StorageRepository.getInstance();
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +35,7 @@ void main() {
     ),
     BlocProvider(create: (context) => TabBoxCubit()),
     BlocProvider(
-      create: (context) => StudentProfileBloc(),
+      create: (context) => StudentProfileBloc()..add(GetStudentInfoEvent()),
     ),
     BlocProvider(
         create: (context) => TeachersCubit(
