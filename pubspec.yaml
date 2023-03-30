@@ -52,10 +52,9 @@ dependencies:
   easy_localization: ^3.0.1
   email_validator: ^2.1.16
   equatable: ^2.0.5
-  file_picker: ^5.0.1
-  firebase_storage: ^11.0.6
   google_fonts: ^4.0.3 
   get_it: ^7.2.0
+  google_nav_bar: ^5.0.6
 
 
 dev_dependencies:

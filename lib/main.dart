@@ -18,10 +18,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'data/repository/login_repo/login_repository.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
-  StorageRepository.getInstance();
+  await StorageRepository.getInstance();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
