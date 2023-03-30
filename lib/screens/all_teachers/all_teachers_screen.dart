@@ -22,11 +22,11 @@ class AllTeachersPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: GridView.builder(
           physics: const BouncingScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 32,
-              mainAxisSpacing: 20,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: 30.w,
+              mainAxisSpacing: 20.h,
               crossAxisCount: 2,
-              mainAxisExtent: 190),
+              mainAxisExtent: 210),
           itemCount: teachers.length,
           itemBuilder: (context, index) {
             return MyTeacherWidget(teacher: teachers[index]);

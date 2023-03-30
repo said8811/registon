@@ -16,11 +16,11 @@ class StudentApiService extends StudentApiClient {
       print(token);
       Response response = await dio.get(
         "${dio.options.baseUrl}student/get-by-token",
-        options: Options(
-          headers: {
-            "Authorization": "Bearer $token",
-          },
-        ),
+        // options: Options(
+        //   headers: {
+        //     "Authorization": "Bearer $token",
+        //   },
+        // ),
       );
 
       if (response.statusCode == 200) {

@@ -21,7 +21,7 @@ class TeacherRatingWidget extends StatelessWidget {
         children: [
           Container(
             height: 60.h,
-            padding: EdgeInsets.symmetric(horizontal: 12.r),
+            padding: EdgeInsets.symmetric(horizontal: 15.r),
             decoration: BoxDecoration(
                 color: Colors.orange.withOpacity(0.2),
                 borderRadius: const BorderRadius.only(
@@ -29,25 +29,10 @@ class TeacherRatingWidget extends StatelessWidget {
                     topRight: Radius.circular(20))),
             child: Row(
               children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 40.h,
-                      width: 40.w,
-                      child: const CircularProgressIndicator(
-                        color: Colors.orange,
-                        value: 0.64,
-                      ),
-                    ),
-                    Positioned(
-                        left: 8,
-                        top: 10,
-                        child: Text(
-                          "64%",
-                          style: TextStyle(
-                              fontSize: 16.sp, fontWeight: FontWeight.bold),
-                        )),
-                  ],
+                Text(
+                  "64%",
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(width: 18.w),
                 const Text("O'quvchilar qoniqarli baxo bergan")
