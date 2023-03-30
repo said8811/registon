@@ -12,17 +12,18 @@ class StudentApiClient {
   _init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: "http://3.126.92.10/",
+        baseUrl: "http://3.70.231.199/",
       ),
     );
 
     dio.interceptors.add(InterceptorsWrapper(onError: ((error, handler) {
-      debugPrint('ERROR OCCURRED:${error.response?.statusCode}');
+      debugPrint('ERROR OCCURRED: ${error.response?.statusCode} $error');
       return handler.next(error);
     }), onRequest: (requestOptions, handler) async {
       String token = await StorageRepository.gettoken();
-      requestOptions.headers["Authorization"] = token;
+      requestOptions.headers["Authorization"] = "Bearer $token";
       requestOptions.headers["accept"] = "application/json";
+
       return handler.next(requestOptions);
     }, onResponse: (Response response, ResponseInterceptorHandler handler) {
       debugPrint("RESPONSE HAS RECEIVED");

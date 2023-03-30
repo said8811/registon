@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/data/models/student_model/student_model.dart';
 import 'package:registon/screens/app_router.dart';
-import 'package:registon/screens/tab_box/profile/student_profile/widget/appbar.dart';
 import 'package:registon/screens/tab_box/profile/student_profile/widget/profile_info_item.dart';
 
 import '../../../../widgets/global_button.dart';
@@ -15,9 +14,7 @@ class StudentInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF002766),
-      appBar: const ProfileAppBar(
-        title: Text("My Profile"),
-      ),
+      appBar: AppBar(),
       body: Container(
         height: double.infinity,
         width: double.infinity,

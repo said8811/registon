@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_cubit.dart';
 import 'package:registon/bloc/subjects_cubit/subjects_state.dart';
+import 'package:registon/data/models/subjects_model/subject_model.dart';
 
 class SearchTeacher extends StatefulWidget {
   const SearchTeacher({super.key});
@@ -14,6 +15,7 @@ class SearchTeacher extends StatefulWidget {
 }
 
 class _SearchTeacherState extends State<SearchTeacher> {
+  int selectedTab = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +47,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
             BlocBuilder<SubjectsCubit, SubjectsState>(
               builder: (context, state) {
                 if (state is SubjectsInSucces) {
+                  state.taechers = state.taechers.reversed.toList();
                   return SizedBox(
                     height: 34.h,
                     child: ListView.separated(
@@ -55,12 +58,20 @@ class _SearchTeacherState extends State<SearchTeacher> {
                       scrollDirection: Axis.horizontal,
                       itemCount: state.taechers.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          padding: EdgeInsets.all(8.r),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.orange),
-                              borderRadius: BorderRadius.circular(8.r)),
-                          child: Text(state.taechers[index].major ?? ""),
+                        return InkWell(
+                          onTap: () => setState(() {
+                            selectedTab = index;
+                          }),
+                          child: Container(
+                            padding: EdgeInsets.all(8.r),
+                            decoration: BoxDecoration(
+                                color: selectedTab == index
+                                    ? Colors.orange
+                                    : Colors.white,
+                                border: Border.all(color: Colors.orange),
+                                borderRadius: BorderRadius.circular(8.r)),
+                            child: Text(state.taechers[index].major ?? ""),
+                          ),
                         );
                       },
                     ),
