@@ -12,6 +12,6 @@ class OnBoardingModel {
         text: "Yangi odamlarni\nuchrating va bilimigizni yaxshilang"),
     OnBoardingModel(
         imgUrl: "assets/images/onBoarding3.jpg",
-        text: "Dostlaringiz bilan\nfikringizni ulashing!"),
+        text: "Do'stlaringiz bilan\nfikringizni ulashing!"),
   ];
 }

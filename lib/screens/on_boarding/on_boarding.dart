@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:registon/screens/app_router.dart';
 import 'package:registon/widgets/indicator.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -46,16 +47,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 itemCount: OnBoardingModel.pages.length,
                 itemBuilder: (context, index) {
                   OnBoardingModel page = OnBoardingModel.pages[index];
-                  return Container(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          page.imgUrl,
-                          height: 400.h,
-                        ),
-                        Text(page.text)
-                      ],
-                    ),
+                  return Column(
+                    children: [
+                      Image.asset(
+                        page.imgUrl,
+                        height: 400.h,
+                      ),
+                      Text(
+                        page.text,
+                        style: GoogleFonts.raleway(fontSize: 20),
+                      )
+                    ],
                   );
                 },
               ),

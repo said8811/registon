@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:registon/bloc/student_profile/bloc/student_profile_bloc.dart';
 import 'package:registon/bloc/student_profile/bloc/student_profile_event.dart';
 import 'package:registon/bloc/student_profile/bloc/student_profile_state.dart';
 import 'package:registon/data/models/student_model/student_model.dart';
 import 'package:registon/screens/app_router.dart';
-import 'package:registon/screens/tab_box/profile/student_profile/widget/appbar.dart';
 import 'package:registon/screens/tab_box/profile/student_profile/widget/menu_item.dart';
 
 import '../../../../data/models/form_status/form_status.dart';
@@ -31,32 +31,14 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
         if (state.status == FormStatus.gettingStudentInfoInSuccess) {
           StudentModel studentModel = state.student;
           return Scaffold(
-            backgroundColor: const Color(0xFF002766),
-            appBar: ProfileAppBar(
-                title: SizedBox(
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 20, left: 40),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundImage: NetworkImage(
-                          "https://www.citypng.com/public/uploads/small/11639594360nclmllzpmer2dvmrgsojcin90qmnuloytwrcohikyurvuyfzvhxeeaveigoiajks5w2nytyfpix678beyh4ykhgvmhkv3r3yj5hi.png"),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: Text(
-                        studentModel.firstName,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(studentModel.firstName,
-                          style: const TextStyle(color: Colors.grey)),
-                    ),
-                  )
-                ],
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Text(
+                'Profile',
+                style: GoogleFonts.raleway(fontWeight: FontWeight.bold),
               ),
-            )),
+            ),
             body: Container(
               height: double.infinity,
               width: double.infinity,
