@@ -18,13 +18,13 @@ class GlobalButton extends StatelessWidget {
       width: double.infinity,
       height: 56.h,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xFFFB5353) : const Color(0xFFFEEBEB),
+        color: isActive ? Colors.orange : const Color(0xFFFEEBEB),
         borderRadius: BorderRadius.circular(15.r),
       ),
       child: ElevatedButton(
         onPressed: isActive ? onTap : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFFB5353),
+          backgroundColor: Colors.orange,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.r),
           ),
@@ -33,7 +33,7 @@ class GlobalButton extends StatelessWidget {
           buttonText,
           style: TextStyle(
             fontSize: 16.sp,
-            color: isActive ? Colors.white : const Color(0xFFFB5353),
+            color: isActive ? Colors.white : Colors.orange,
             fontWeight: FontWeight.w400,
           ),
         ),
