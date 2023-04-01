@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 16.h),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20).r,
                 child: Text(
@@ -79,9 +79,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0).r,
+                padding: const EdgeInsets.all(18.0).r,
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25).r,
                   onTap: () =>
                       Navigator.pushNamed(context, RouteName.searchTeacher),
                   child: Container(
