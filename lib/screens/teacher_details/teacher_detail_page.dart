@@ -114,6 +114,7 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                       ),
                     ),
                     SizedBox(height: 20.h),
+                    const TeacherRatingWidget(),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.0.r),
                       child: Row(
@@ -131,7 +132,6 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                         ],
                       ),
                     ),
-                    TeacherRatingWidget(),
                     Container(
                       decoration: const BoxDecoration(),
                       height: 151.h,

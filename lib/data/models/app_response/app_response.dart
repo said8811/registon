@@ -1,7 +1,7 @@
 class AppResponse {
   String errorTxt;
   int? statusCode;
-  dynamic data;
+  dynamic data; 
   AppResponse({
     this.errorTxt = '',
     this.data,
