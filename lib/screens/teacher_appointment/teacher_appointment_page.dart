@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TeacherAppointmentPage extends StatelessWidget {
@@ -10,6 +8,7 @@ class TeacherAppointmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
           "O'qituvchi bandlash",
@@ -17,8 +16,13 @@ class TeacherAppointmentPage extends StatelessWidget {
         ),
       ),
       body: Container(
+        decoration: const BoxDecoration(color: Colors.white),
         child: Column(
-          children: [],
+          children: [
+            SizedBox(
+              height: 40.sp,
+            ),
+          ],
         ),
       ),
     );
