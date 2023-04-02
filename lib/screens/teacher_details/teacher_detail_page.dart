@@ -4,8 +4,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
+import 'package:registon/screens/app_router.dart';
 import 'package:registon/screens/teacher_details/widgets/comment_widget.dart';
 import 'package:registon/screens/teacher_details/widgets/rating_widget.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import 'widgets/calendar_container.dart';
 
 class TeacherDetails extends StatefulWidget {
@@ -36,7 +38,6 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                 height: 180.h,
               ),
               Container(
-                height: 900.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -148,6 +149,36 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                           return const CommentWidget();
                         },
                       ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Center(
+                      child: ZoomTapAnimation(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RouteName.teacherAppointment);
+                        },
+                        child: Container(
+                          width: 300.w,
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                            child: Text(
+                              "Band etish",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
                     )
                   ],
                 ),

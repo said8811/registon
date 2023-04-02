@@ -11,6 +11,7 @@ import 'package:registon/screens/tab_box/profile/student_profile/student_info_sc
 import 'package:registon/screens/tab_box/profile/student_profile/student_profile_screen.dart';
 import 'package:registon/screens/tab_box/profile/student_profile_update/student_update_screen.dart';
 import 'package:registon/screens/tab_box/student_tab_box.dart';
+import 'package:registon/screens/teacher_appointment/teacher_appointment_page.dart';
 
 import '../data/models/student_model/student_model.dart';
 import 'help/help_support_page.dart';
@@ -31,6 +32,7 @@ abstract class RouteName {
   static const settingScreen = '/settingScreen';
   static const helpScreen = '/helpScreen';
   static const searchTeacher = '/searchTeacher';
+  static const teacherAppointment = '/teacherAppointment';
   static const allTeachers = '/allTeachers';
 }
 
@@ -49,6 +51,9 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const StudentProfileScreen());
       case RouteName.tabBoxStudent:
         return MaterialPageRoute(builder: (_) => const StudentTabBox());
+      case RouteName.teacherAppointment:
+        return MaterialPageRoute(
+            builder: (_) => const TeacherAppointmentPage());
       case RouteName.allTeachers:
         return MaterialPageRoute(
             builder: (_) => AllTeachersPage(
