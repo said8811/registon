@@ -8,7 +8,7 @@ import 'package:registon/screens/app_router.dart';
 import 'package:registon/screens/teacher_details/widgets/comment_widget.dart';
 import 'package:registon/screens/teacher_details/widgets/rating_widget.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import 'widgets/calendar_container.dart';
+import '../teacher_appointment/widgets/calendar_container.dart';
 
 class TeacherDetails extends StatefulWidget {
   TeachersModel teacher;
@@ -19,7 +19,6 @@ class TeacherDetails extends StatefulWidget {
 }
 
 class _TeacherDetailsState extends State<TeacherDetails> {
-  int selectedDay = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,33 +189,3 @@ class _TeacherDetailsState extends State<TeacherDetails> {
     );
   }
 }
- //   SizedBox(
-
-            //     height: 88.h,
-            //     child: ListView.builder(
-            //       itemCount: 7,
-            //       padding: const EdgeInsets.only(left: 24, right: 12).r,
-            //       scrollDirection: Axis.horizontal,
-            //       physics: const BouncingScrollPhysics(),
-            //       itemBuilder: (context, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             setState(() {
-            //               selectedDay = index;
-            //             });
-            //           },
-            //           child: CalendarContainer(
-            //             select: selectedDay == index ? true : false,
-            //             week: DateFormat.E().format(
-            //                 DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)),
-            //             date: DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)
-            //                 .day,
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
