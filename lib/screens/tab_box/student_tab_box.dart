@@ -25,7 +25,7 @@ class _StudentTabBoxState extends State<StudentTabBox> {
           builder: (context, state) => pages[state],
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

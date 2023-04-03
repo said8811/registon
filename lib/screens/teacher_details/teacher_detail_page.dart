@@ -4,9 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:registon/data/models/teachers_model/teachers_model.dart';
+import 'package:registon/screens/app_router.dart';
 import 'package:registon/screens/teacher_details/widgets/comment_widget.dart';
 import 'package:registon/screens/teacher_details/widgets/rating_widget.dart';
-import 'widgets/calendar_container.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import '../teacher_appointment/widgets/calendar_container.dart';
 
 class TeacherDetails extends StatefulWidget {
   TeachersModel teacher;
@@ -17,7 +19,6 @@ class TeacherDetails extends StatefulWidget {
 }
 
 class _TeacherDetailsState extends State<TeacherDetails> {
-  int selectedDay = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +37,6 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                 height: 180.h,
               ),
               Container(
-                height: 900.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -114,6 +114,7 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                       ),
                     ),
                     SizedBox(height: 20.h),
+                    const TeacherRatingWidget(),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.0.r),
                       child: Row(
@@ -131,7 +132,6 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                         ],
                       ),
                     ),
-                    TeacherRatingWidget(),
                     Container(
                       decoration: const BoxDecoration(),
                       height: 151.h,
@@ -148,6 +148,36 @@ class _TeacherDetailsState extends State<TeacherDetails> {
                           return const CommentWidget();
                         },
                       ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Center(
+                      child: ZoomTapAnimation(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RouteName.teacherAppointment);
+                        },
+                        child: Container(
+                          width: 300.w,
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                            child: Text(
+                              "Band etish",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
                     )
                   ],
                 ),
@@ -159,33 +189,3 @@ class _TeacherDetailsState extends State<TeacherDetails> {
     );
   }
 }
- //   SizedBox(
-
-            //     height: 88.h,
-            //     child: ListView.builder(
-            //       itemCount: 7,
-            //       padding: const EdgeInsets.only(left: 24, right: 12).r,
-            //       scrollDirection: Axis.horizontal,
-            //       physics: const BouncingScrollPhysics(),
-            //       itemBuilder: (context, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             setState(() {
-            //               selectedDay = index;
-            //             });
-            //           },
-            //           child: CalendarContainer(
-            //             select: selectedDay == index ? true : false,
-            //             week: DateFormat.E().format(
-            //                 DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)),
-            //             date: DateTime.fromMillisecondsSinceEpoch(
-            //                     DateTime.now().millisecondsSinceEpoch +
-            //                         (index) * 86400000)
-            //                 .day,
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
