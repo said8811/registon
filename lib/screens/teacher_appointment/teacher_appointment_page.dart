@@ -12,6 +12,7 @@ class TeacherAppointmentPage extends StatefulWidget {
 
 class _TeacherAppointmentPageState extends State<TeacherAppointmentPage> {
   int selectedDay = 0;
+  final TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class _TeacherAppointmentPageState extends State<TeacherAppointmentPage> {
       body: Container(
         decoration: const BoxDecoration(color: Colors.white),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 20.sp,
@@ -58,6 +60,29 @@ class _TeacherAppointmentPageState extends State<TeacherAppointmentPage> {
                     ),
                   );
                 },
+              ),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.r),
+              child: TextField(
+                controller: descriptionController,
+                maxLines: 5,
+                decoration: InputDecoration(
+                    hintText:
+                        "O'qituvchiga aytmoqchi bo'lgan gapingizni yozing",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.r))),
+              ),
+            ),
+            SizedBox(height: 20.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.r),
+              child: Text(
+                "Kuni tanglang",
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w200),
               ),
             ),
           ],
